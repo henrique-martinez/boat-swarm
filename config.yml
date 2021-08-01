@@ -1,0 +1,38 @@
+world:
+  friction: 0.3
+  drag: 15
+  angular_drag: 150
+  k_a: 1.0
+  min_radius: 50
+  k_r: 100
+  k_d: 0.5
+iceberg:
+  mass: 10
+  radius: 50
+  position:
+    x: 300
+    y: 300
+robots:
+  mass: 1
+  radius: 10
+  positions:
+    - x: 100
+      y: 100
+    - x: 100
+      y: 200
+    - x: 100
+      y: 300
+    - x: 100
+      y: 400
+    - x: 100
+      y: 500
+    - x: 500
+      y: 100
+    - x: 500
+      y: 200
+    - x: 500
+      y: 300
+    - x: 500
+      y: 400
+    - x: 500
+      y: 500
