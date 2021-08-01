@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 import pyglet
 from pyglet.gl import *
-from pyglet.libs.win32.constants import WHITE_BRUSH
 from pyglet.window import key, mouse
 
 import pymunk
@@ -120,7 +119,7 @@ class Main(pyglet.window.Window):
             body.apply_force_at_world_point(drag,body.position)
             body.apply_force_at_world_point(angular_drag*Vec2d(0,1),body.position+Vec2d(1,0))
             body.apply_force_at_world_point(angular_drag*Vec2d(0,-1),body.position-Vec2d(1,0))
-        step_dt = 1 / 25.0
+        step_dt = config['world']['step']
         x = 0
         while x < dt:
             x += step_dt
