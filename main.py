@@ -44,6 +44,7 @@ class Main(pyglet.window.Window):
         self.fps_display = pyglet.window.FPSDisplay(self)
 
         self.create_world()
+        self.index = 0
 
         self.draw_options = pymunk.pyglet_util.DrawOptions()
         self.draw_options.flags = self.draw_options.DRAW_SHAPES
@@ -126,27 +127,15 @@ class Main(pyglet.window.Window):
             self.space.step(step_dt)
 
     def on_key_press(self, symbol, modifiers):
-        if symbol == key.SPACE:
-            mass = 100
-            r = 15
-            moment = pymunk.moment_for_circle(mass, 0, r, (0, 0))
-            body = pymunk.Body(mass, moment)
-            body.position = (0, 165)
-            shape = pymunk.Circle(body, r, (0, 0))
-            shape.friction = 0.3
-            shape.color = (255, 150, 150, 255)
-            self.space.add(body, shape)
-            f = 2000
-            body.apply_impulse_at_local_point((f, 0), (0, 0))
-        elif symbol == key.ESCAPE:
+        if symbol == key.ESCAPE:
             pyglet.app.exit()
         elif symbol == key.RIGHT:
-            self.reference_position = Vec2d(path['points'][self.index]['x'],path['points'][self.index]['y'])
             self.index = (self.index + 1) % len(path['points'])
+            self.reference_position = Vec2d(path['points'][self.index]['x'],path['points'][self.index]['y'])
             print(f"{self.index}: {self.reference_position}")
         elif symbol == key.LEFT:
-            self.reference_position = Vec2d(path['points'][self.index]['x'],path['points'][self.index]['y'])
             self.index = (self.index - 1) % len(path['points'])
+            self.reference_position = Vec2d(path['points'][self.index]['x'],path['points'][self.index]['y'])
             print(f"{self.index}: {self.reference_position}")
         elif symbol == pyglet.window.key.P:
             pyglet.image.get_buffer_manager().get_color_buffer().save(
